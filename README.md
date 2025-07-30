@@ -11,7 +11,7 @@
 
 
 ## Updates
-- [2025/07/30] 🎉 **NEW!** We have released LIMO-v2! This includes an updated paper, new dataset (LIMO-v2), and improved model corresponding to the latest research findings. Check out the new resources below!
+- [2025/07/30] 🎉 **NEW!** We have released LIMO-v2! This includes an updated paper, new dataset (LIMO-v2), and improved model. Check out the new resources below!
 - [2025/07/08] 🎉 LIMO has been accepted by COLM 2025!
 - [2025/02/18] 🚨 We've added LIMO's performance on the recently completed [AIME 2025 evaluation](https://github.com/GAIR-NLP/AIME-Preview), where it achieved a solid score of 44.6, demonstrating competitive performance using only 817 training samples compared to other models trained on much larger datasets (800k samples).
 - [2025/02/10] 🚨 [Third-party evaluations](https://x.com/WenhuChen/status/1888691381054435690) highlight LIMO's strong generalization capabilities
