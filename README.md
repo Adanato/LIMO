@@ -2,8 +2,8 @@
 
 <p align="center">
   📄 <a href="https://arxiv.org/pdf/2502.03387" target="_blank">Paper</a> &nbsp; | &nbsp;
-  🌐 <a href="https://huggingface.co/datasets/GAIR/LIMO" target="_blank">Dataset</a> &nbsp; | &nbsp;
-  📘 <a href="https://huggingface.co/GAIR/LIMO" target="_blank">Model</a>
+  🌐 <a href="https://huggingface.co/datasets/GAIR/LIMO-v2" target="_blank">Dataset (v2)</a> &nbsp; | &nbsp;
+  📘 <a href="https://huggingface.co/GAIR/LIMO-v2" target="_blank">Model (v2)</a>
 </p>
 
 
@@ -11,10 +11,11 @@
 
 
 ## Updates
-- [2025/07/08] 🎉 LIMO has been accepted by COLM 2025! A new version of the paper and corresponding dataset will be released soon!
+- [2025/07/30] 🎉 **NEW!** We have released LIMO-v2! This includes an updated paper, new dataset (LIMO-v2), and improved model corresponding to the latest research findings. Check out the new resources below!
+- [2025/07/08] 🎉 LIMO has been accepted by COLM 2025!
 - [2025/02/18] 🚨 We've added LIMO's performance on the recently completed [AIME 2025 evaluation](https://github.com/GAIR-NLP/AIME-Preview), where it achieved a solid score of 44.6, demonstrating competitive performance using only 817 training samples compared to other models trained on much larger datasets (800k samples).
 - [2025/02/10] 🚨 [Third-party evaluations](https://x.com/WenhuChen/status/1888691381054435690) highlight LIMO's strong generalization capabilities
-- [2025/02/08] 🚨 The LIMO dataset has received positive recognition from the [community](https://x.com/stefan_fee/status/1888203185937907993). According to third-party evaluations, the dataset achieved a 10-percentage point performance improvement on AIME24 and GPQA benchmarks, and a 3-point improvement on MATH-500. These experimental results demonstrate LIMO's potential in enhancing RL Scaling.
+- [2025/02/08] 🚨 The LIMO dataset has received positive recognition from the [community](https://x.stefan_fee/status/1888203185937907993). According to third-party evaluations, the dataset achieved a 10-percentage point performance improvement on AIME24 and GPQA benchmarks, and a 3-point improvement on MATH-500. These experimental results demonstrate LIMO's potential in enhancing RL Scaling.
 
 
 
@@ -24,8 +25,6 @@
   - [Updates](#updates)
   - [📌 Table of Contents](#-table-of-contents)
   - [Overview](#overview)
-  - [Key Results](#key-results)
-    - [New Results on AIME 2025](#new-results-on-aime-2025)
   - [Model Zoo](#model-zoo)
   - [Datasets](#datasets)
   - [Quick Start](#quick-start)
@@ -33,6 +32,7 @@
     - [Training Setup](#training-setup)
     - [Launch Training](#launch-training)
   - [Evaluation](#evaluation)
+  - [Legacy Resources (v1)](#legacy-resources-v1)
   - [License](#license)
   - [Citation](#citation)
 
@@ -41,83 +41,35 @@
 
 LIMO challenges the conventional wisdom in mathematical reasoning by demonstrating that models can achieve superior performance with significantly less but higher quality training data. Our approach:
 
-- 🎯 Achieves SOTA with only 817 carefully curated training samples
+- 🎯 Achieves SOTA with carefully curated training samples
 - 🌟 Shows strong generalization across diverse problem types
-- 🔬 Provides comprehensive evaluation on 10 benchmarks
-- 📚 Releases high-quality datasets and evaluation tools
-
-## Key Results
-
-### New Results on AIME 2025
-| Model                         | Samples | AIME 2024 | AIME I 2025 (AVG) |
-| ----------------------------- | ------- | --------- | ----------------- |
-| o3-mini-high                  | N/A     | 83.8      | 76.7              |
-| o3-mini-medium                | N/A     | 75.8      | 66.7              |
-| DeepSeek-R1                   | N/A     | 79.8      | 65.0              |
-| DeepSeek-R1-Distill-Llama-70B | 800k    | 57.1      | 51.4              |
-| o1-mini                       | N/A     | 63.6      | 50.8              |
-| DeepSeek-R1-Distill-Qwen-14B  | 800k    | 61.7      | 46.7              |
-| DeepSeek-R1-Distill-Qwen-32B  | 800k    | 58.3      | 46.1              |
-| **LIMO**                      | 817     | 56.3      | 44.5              |
-| o3-mini-low                   | N/A     | 56.3      | 44.2              |
-| gemini-2.0-flash-thinking     | N/A     | 61.5      | 43.3              |
-| o1-preview                    | N/A     | 44.6      | 37.5              |
-| QwQ                           | N/A     | 46.7      | 37.2              |
-| DeepSeek-R1-Distill-Qwen-7B   | 800k    | 49.6      | 36.9              |
-| s1                            | 1k      | 32.9      | 28.9              |
-| DeepSeek-R1-Distill-Qwen-1.5B | 800k    | 25.0      | 28.0              |
-| DeepSeek-R1-Distill-Llama-8B  | 800k    | 37.1      | 24.7              |
-
-
-
-
-
-| Model         | AIME24    | MATH500   | Training Samples |
-| ------------- | --------- | --------- | ---------------- |
-| LIMO (Ours)   | **57.1%** | **94.8%** | 817              |
-| Previous SOTA | 6.5%      | 59.2%     | 100k+            |
-
-<details>
-<summary>Click to see more detailed results</summary>
-
-| Benchmark     | LIMO      | Previous SOTA | Improvement |
-| ------------- | --------- | ------------- | ----------- |
-| AIME24        | **57.1%** | 6.5%          | +50.6%      |
-| MATH500       | **94.8%** | 59.2%         | +35.6%      |
-| AMC23         | **92.0%** | 40.6%         | +51.4%      |
-| OlympiadBench | **66.8%** | 36.7%         | +30.1%      |
-| CHMath        | **75.4%** | 11.2%         | +64.2%      |
-| Gaokao        | **81.0%** | 49.4%         | +31.6%      |
-| Kaoyan        | **73.4%** | 32.7%         | +40.7%      |
-| GradeSchool   | **76.2%** | 36.2%         | +40.0%      |
-| Minerva       | 44.9%     | **47.1%**     | -2.2%       |
-| GPQA          | 66.7%     | **73.3%**     | -6.6%       |
-
-</details>
+- 🔬 Provides comprehensive evaluation tools
+- 📚 Releases high-quality datasets and models
 
 ## Model Zoo
 
-Our LIMO model is available on Hugging Face 🤗:
+Our LIMO models are available on Hugging Face 🤗:
 
-| Model | Backbone                                                                 | Size | Link                                  |
-| ----- | ------------------------------------------------------------------------ | ---- | ------------------------------------- |
-| LIMO  | [Qwen2.5-32B-Instruct](https://huggingface.co/Qwen/Qwen2.5-32B-Instruct) | 32B  | [🤗](https://huggingface.co/GAIR/LIMO) |
+| Model | Backbone | Size | Link |
+|-------|----------|------|------|
+| **LIMO-v2** (Latest) | [Qwen2.5-32B-Instruct](https://huggingface.co/Qwen/Qwen2.5-32B-Instruct) | 32B | [🤗](https://huggingface.co/GAIR/LIMO-v2) |
+| LIMO-v1 | [Qwen2.5-32B-Instruct](https://huggingface.co/Qwen/Qwen2.5-32B-Instruct) | 32B | [🤗](https://huggingface.co/GAIR/LIMO) |
 
 
 ## Datasets
 
 We release our datasets through Hugging Face 🤗:
 
-| Dataset | Description                           | Size | Link                                           |
-| ------- | ------------------------------------- | ---- | ---------------------------------------------- |
-| LIMO    | Training set used to train LIMO model | 817  | [🤗](https://huggingface.co/datasets/GAIR/LIMO) |
-
-Note: We are gradually releasing additional datasets mentioned in our paper, including those used for comparative experiments, to facilitate reproducibility and further analysis by the research community. Stay tuned!
+| Dataset | Description | Link |
+|---------|-------------|------|
+| **LIMO-v2** (Latest) | Updated training set for the latest paper version (800 samples) | [🤗](https://huggingface.co/datasets/GAIR/LIMO-v2) |
+| LIMO-v1 | Original training set (817 samples) | [🤗](https://huggingface.co/datasets/GAIR/LIMO) |
 
 ## Quick Start
 
-Our model is fine-tuned on [Qwen2.5-32B-Instruct](https://huggingface.co/Qwen/Qwen2.5-32B-Instruct) and is compatible with most mainstream frameworks like [HF Transformers](https://github.com/huggingface/transformers), [VLLM](https://github.com/vllm-project/vllm), [TensorRT-LLM](https://github.com/NVIDIA/TensorRT-LLM) and etc. 
+Our models are fine-tuned on [Qwen2.5-32B-Instruct](https://huggingface.co/Qwen/Qwen2.5-32B-Instruct) and are compatible with most mainstream frameworks like [HF Transformers](https://github.com/huggingface/transformers), [VLLM](https://github.com/vllm-project/vllm), [TensorRT-LLM](https://github.com/NVIDIA/TensorRT-LLM) and etc. 
 
+### Using the Latest Model (LIMO-v2)
 
 <details>
 <summary>Start with HF Transformers</summary>
@@ -133,12 +85,12 @@ import torch
 
 # Initialize model and tokenizer
 model = AutoModelForCausalLM.from_pretrained(
-    "GAIR/LIMO",
+    "GAIR/LIMO-v2",
     torch_dtype="auto",
     trust_remote_code=True,
     device_map="auto"
 )
-tokenizer = AutoTokenizer.from_pretrained("GAIR/LIMO", trust_remote_code=True)
+tokenizer = AutoTokenizer.from_pretrained("GAIR/LIMO-v2", trust_remote_code=True)
 
 # Prepare input messages (We use the following template and system prompt during training and inference)
 messages = [
@@ -187,7 +139,7 @@ from transformers import AutoTokenizer
 
 # Initialize the model
 llm = LLM(
-    model="GAIR/LIMO",
+    model="GAIR/LIMO-v2",
     tensor_parallel_size=4,  # adjust based on available GPUs
     trust_remote_code=True,
     swap_space=60,
@@ -201,7 +153,7 @@ messages = [
 ]
 
 # Setup tokenizer
-tokenizer = AutoTokenizer.from_pretrained("GAIR/LIMO", trust_remote_code=True)
+tokenizer = AutoTokenizer.from_pretrained("GAIR/LIMO-v2", trust_remote_code=True)
 text = tokenizer.apply_chat_template(
     messages,
     tokenize=False,
@@ -234,7 +186,7 @@ We utilize [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory) framework f
    - Ensure all dependencies are properly installed and configured.
 
 2. **Data Preparation**
-   - Obtain the LIMO dataset from [🤗 Hugging Face](https://huggingface.co/datasets/GAIR/LIMO).
+   - Obtain the LIMO-v2 dataset from [🤗 Hugging Face](https://huggingface.co/datasets/GAIR/LIMO-v2).
    - Format the dataset according to LLaMA-Factory's [data preparation guidelines](https://github.com/hiyouga/LLaMA-Factory/tree/main/data). We also convert LIMO dataset to [the supported format](https://github.com/GAIR-NLP/LIMO/blob/main/train/data/limo.json).
 
 3. **Configuration**
@@ -265,8 +217,6 @@ For more detailed training examples and configurations, refer to [LLaMA-Factory'
 
 > **Note**: Multi-node training environments can vary significantly between different machines and cluster setups. You'll need to adapt the training configuration and launch commands according to your specific environment and infrastructure.
 
-
-
 ## Evaluation
 
 We also release scripts for evaluating Large Language Models (LLMs) on mathematical reasoning tasks. The evaluation framework includes both inference (using the VLLM framework) and evaluation (using both rule-based and model-based approaches) components.
@@ -275,11 +225,18 @@ For rule-based evaluation, we support pure numerical problems like AIME and most
 
 For detailed instructions and implementation details, please refer to [`eval/README.md`](./eval/readme.md).
 
+## Legacy Resources (v1)
+
+If you need the original LIMO resources from the initial paper version, they are still available:
+
+- **Model**: [GAIR/LIMO](https://huggingface.co/GAIR/LIMO) (Original 817-sample trained model)
+- **Dataset**: [GAIR/LIMO](https://huggingface.co/datasets/GAIR/LIMO) (Original 817 training samples)
+
+The v1 resources correspond to the initial paper submission and contain the experimental results that were previously shown in this README.
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 
 ## Citation
 
