@@ -187,7 +187,7 @@ We utilize [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory) framework f
 
 2. **Data Preparation**
    - Obtain the LIMO-v2 dataset from [🤗 Hugging Face](https://huggingface.co/datasets/GAIR/LIMO-v2).
-   - Format the dataset according to LLaMA-Factory's [data preparation guidelines](https://github.com/hiyouga/LLaMA-Factory/tree/main/data). We also convert LIMO dataset to [the supported format](https://github.com/GAIR-NLP/LIMO/blob/main/train/data/limo.json).
+   - Format the dataset according to LLaMA-Factory's [data preparation guidelines](https://github.com/hiyouga/LLaMA-Factory/tree/main/data).
 
 3. **Configuration**
    - Use our provided [configuration file](https://github.com/GAIR-NLP/LIMO/blob/main/train/examples/train_limo.yaml).
