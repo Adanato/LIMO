@@ -1,0 +1,27 @@
+[project]
+name = "eval"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "datasets>=4.0.0",
+    "flash-attn>=2.8.3",
+    "flashinfer-python>=0.3.1",
+    "huggingface-hub>=0.34.4",
+    "latex2sympy2==1.9.1",
+    "psycopg>=3.2.10",
+    "python-dateutil>=2.9.0.post0",
+    "python-dotenv>=1.1.1",
+    "ray>=2.49.1",
+    "setuptools>=80.9.0",
+    "torch>=2.3.0",
+    "tqdm>=4.67.1",
+    "transformers>=4.56.1",
+    "vllm>=0.8.0",
+    "word2number>=1.1",
+]
+
+[tool.uv.extra-build-dependencies]
+flash-attn = ["torch"]
+

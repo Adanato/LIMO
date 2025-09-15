@@ -1,0 +1,52 @@
+models:
+  - Adanato/Llama-3.2-1B-Instruct-low_acereason_25k
+  - Adanato/Llama-3.2-1B-Instruct-high_acereason_25k
+  - Adanato/Llama-3.2-1B-Instruct-baseline_25k
+  - Adanato/Llama-3.2-1B-Instruct-high_openr1_25k
+  - Adanato/Llama-3.2-1B-Instruct-high_openo1_25k
+  - Adanato/Llama-3.2-1B-Instruct-high_nemotron_25k
+  - Adanato/Llama-3.2-1B-Instruct-high_openthoughts_25k
+  - Adanato/Llama-3.2-1B-Instruct-low_nemotron_25k
+  - Adanato/Llama-3.2-1B-Instruct-low_openo1_25k
+  - Adanato/Llama-3.2-1B-Instruct-low_openthoughts_25k
+  - Adanato/Llama-3.2-1B-Instruct-low_openr1_25k
+
+eval:
+  data_dir: ./data
+
+  # pass@16 settings
+  n_sampling: 4
+  k: 4
+  temperature: 0.8    
+  top_p: 0.95
+  max_tokens: 8192 
+  dtype: auto
+  stop: null
+
+  prompt_type: qwen-instruct
+  prompt_file_path: ./prompts
+  surround_with_messages: false
+  use_few_shot: false    
+
+  output_dir: ./outputs
+  completions_save_dir: ./completions
+  seed: 0
+  db_path: ./eval_results.db
+
+datasets:
+  - data_name: math
+    split: test
+    start_idx: 0
+    end_idx: -1
+  - data_name: gsm8k
+    split: test
+    start_idx: 0
+    end_idx: -1
+  - data_name: amc
+    split: test
+    start_idx: 0
+    end_idx: -1
+  - data_name: aime
+    split: test
+    start_idx: 0
+    end_idx: -1

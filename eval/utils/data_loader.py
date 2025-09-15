@@ -14,7 +14,7 @@ def load_data(data_name, split, data_dir='./data'):
         elif data_name == "theorem-qa":
             dataset = load_dataset("wenhu/TheoremQA", split=split)
         elif data_name == "gsm8k":
-            dataset = load_dataset(data_name, split=split)
+            dataset = load_dataset(data_name, "main", split=split)
         elif data_name == "gsm-hard":
             dataset = load_dataset("reasoning-machines/gsm-hard", split="train")
         elif data_name == "svamp":
